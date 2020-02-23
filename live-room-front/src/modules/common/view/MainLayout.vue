@@ -10,9 +10,17 @@
           <i class="iconfont icon-heart"></i>
           <span class="m-t-5">订阅</span>
         </div>
+        <div @click="toPage('home')" class="menu-btn-item m-t-20" flex="dir:top cross:center">
+          <i class="iconfont icon-video1"></i>
+          <span class="m-t-5">视频</span>
+        </div>
         <div @click="toPage('oneToMore')" class="menu-btn-item m-t-20" flex="dir:top cross:center">
           <i class="iconfont icon-live-l"></i>
           <span class="m-t-5">直播</span>
+        </div>
+        <div @click="toPage('moreToMore')" class="menu-btn-item m-t-20" flex="dir:top cross:center">
+          <i class="iconfont icon-icon_meeting"></i>
+          <span class="m-t-5">会议</span>
         </div>
       </div>
       <div class="container" flex="dir:top">
