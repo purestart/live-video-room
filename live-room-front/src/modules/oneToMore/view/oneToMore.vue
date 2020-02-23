@@ -8,21 +8,47 @@
             class="video-content local-video"
           >
             <video class="video" />
-            <div flex="main:center" class="video-content remote-video">
+            <!-- <div flex="main:center" class="video-content remote-video">
               <video class="video" />
+            </div> -->
+            <!-- <controlCom @statusChange="statusChange" ref="controlCom" /> -->
+          </div>
+          <div flex="cross:center" class="p-10">
+            <div>
+              礼物宝箱:
             </div>
-            <controlCom @statusChange="statusChange" ref="controlCom" />
+            <div class="m-l-3 gift-list">
+              <img src="../../../assets/images/liwu01.jpg" />
+              <img src="../../../assets/images/liwu02.jpg" />
+              <img src="../../../assets/images/liwu03.jpg" />
+              <img src="../../../assets/images/liwu04.jpg" />
+              <img src="../../../assets/images/liwu05.jpg" />
+              <img src="../../../assets/images/liwu06.jpg" />
+              <img src="../../../assets/images/liwu07.jpg" />
+              <img src="../../../assets/images/liwu03.jpg" />
+              <img src="../../../assets/images/liwu04.jpg" />
+              <img src="../../../assets/images/liwu05.jpg" />
+              <img src="../../../assets/images/liwu06.jpg" />
+            </div>
+            <div class="m-l-20">
+              <el-input placeholder="数量1"></el-input>
+            </div>
+            <div class="m-l-20">
+              <el-button>赠送</el-button>
+              <el-button>充值</el-button>
+            </div>
           </div>
         </div>
         <div class="chat-box">
           <div class="chat-wraper">
             <div class="chat-title p-10 b-b">
-              与单纯的开始聊天
+              聊天面板
             </div>
             <div class="chat-content">
               <ul>
                 <li class="chat-item">
-                  <span class="chat-user">单纯的开始：</span>亲，你好！
+                  <span class="chat-user">系统消息：</span
+                  >单纯的开始，进入直播间！
                 </li>
               </ul>
             </div>
@@ -46,11 +72,11 @@
 
 <script type="text/ecmascript-6">
 import joinCom from '../fragment/joinCom';
-import controlCom from '../fragment/controlCom';
+// import controlCom from '../fragment/controlCom';
   export default {
     components:{
       joinCom,
-      controlCom
+      // controlCom
     },
     data () {
       return {
@@ -93,7 +119,7 @@ import controlCom from '../fragment/controlCom';
 
 <style lang="scss" scoped>
 .page-container {
-  .invite-pannel{
+  .invite-pannel {
     background-color: #fff;
   }
   .video-wrapper {
@@ -101,6 +127,11 @@ import controlCom from '../fragment/controlCom';
     background: #fff;
     width: 65vw;
     border-radius: 5px;
+    .gift-list{
+      img{
+        cursor: pointer;
+      }
+    }
 
     .video-content {
       background: #666;
@@ -134,7 +165,7 @@ import controlCom from '../fragment/controlCom';
         font-weight: 600;
       }
       .chat-content {
-        height: 500px;
+        height: 560px;
       }
       .chat-item {
         padding: 10px 10px;

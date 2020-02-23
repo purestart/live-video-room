@@ -17,7 +17,7 @@
         <div class="chat-box">
           <div class="chat-wraper">
             <div class="chat-title p-10 b-b">
-              与单纯的开始聊天
+              会议聊天记录
             </div>
             <div class="chat-content">
               <ul>

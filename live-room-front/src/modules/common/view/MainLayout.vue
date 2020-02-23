@@ -6,6 +6,14 @@
     <div class="body">
       <div :class="ShowHide?'close-nav':'nav'" class="nav-box">
         <!-- <Nav :isCollapse="ShowHide" :lips="lips"></Nav> -->
+        <div @click="toOrder" class="menu-btn-item m-t-20" flex="dir:top cross:center">
+          <i class="iconfont icon-heart"></i>
+          <span class="m-t-5">订阅</span>
+        </div>
+        <div @click="toPage('oneToMore')" class="menu-btn-item m-t-20" flex="dir:top cross:center">
+          <i class="iconfont icon-live-l"></i>
+          <span class="m-t-5">直播</span>
+        </div>
       </div>
       <div class="container" flex="dir:top">
         <!-- <tabs flex-box="0" /> -->
@@ -51,11 +59,11 @@ export default {
     })
   },
   watch: {
-    $route (val) {
-      if (val.path !== "" && val.path !== "/") {
-        this.$utils.toTab(val.fullPath, val);
-      }
-    }
+    // $route (val) {
+    //   if (val.path !== "" && val.path !== "/") {
+    //     // this.$utils.toTab(val.fullPath, val);
+    //   }
+    // }
   },
   methods: {
     // ...mapActions(["fetchAuth", "deftheme", "getUserMenu"]),
@@ -66,6 +74,12 @@ export default {
     },
     toRouter (url) {
       this.$router.push(url);
+    },
+    toPage(name) {
+      this.$router.push({ name: name });
+    },
+    toOrder(){
+      this.$message("暂未登录！！");
     }
   },
   mounted () {
@@ -102,7 +116,18 @@ export default {
   display: flex;
   .nav-box {
     background-color: #2f3035;
+    color: #aaa;
     flex-shrink: 0;
+    .menu-btn-item{
+      cursor: pointer;
+      font-size: 14px;
+      &:hover{
+        color: #ccc;
+      }
+      .iconfont{
+        font-size: 18px;
+      }
+    }
   }
 }
 
@@ -132,7 +157,7 @@ export default {
 
 .body > .close-nav {
   transition: width 0.28s;
-  width: 37px;
+  width: 50px;
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;

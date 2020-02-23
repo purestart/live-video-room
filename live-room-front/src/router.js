@@ -5,6 +5,8 @@ import Router from "vue-router";
 import MainLayout from "./modules/common/view/MainLayout.vue";
 import Page404 from "./modules/common/view/Page404.vue";
 import oneByOneRouter from "./modules/oneByOne/router";
+import oneToMoreRouter from "./modules/oneToMore/router";
+import moreToMoreRouter from "./modules/moreToMore/router";
 // import dashboard from "./modules/dashboard/router.js";
 // import system from "./modules/system/router";
 // import publicRouter from "./modules/public/router";
@@ -31,7 +33,7 @@ export default new Router({
     {
       path: "/",
       component: MainLayout,
-      children: [...oneByOneRouter]
+      children: [...oneByOneRouter,...oneToMoreRouter,...moreToMoreRouter]
     },
     // {
     //   path: '/about',

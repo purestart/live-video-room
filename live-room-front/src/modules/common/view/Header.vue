@@ -12,25 +12,25 @@
         <el-popover placement="bottom" width="500" trigger="hover">
           <div style="display:flex">
             <div
-              @click="toPage('eng-chart')"
+              @click="toPage('home')"
               style="cursor: pointer;flex:1;text-align:center;padding:10px;5px;background-color:#f2f2f2;margin:5px;"
             >
               视频通话
             </div>
-            <div
-              @click="toPage('dealer-chart')"
+            <!-- <div
+              @click="toPage('home')"
               style="cursor: pointer;flex:1;text-align:center;padding:10px;5px;background-color:#f2f2f2;margin:5px;"
             >
               一对一通话
-            </div>
+            </div> -->
             <div
-              @click="toPage('work-team')"
+              @click="toPage('oneToMore')"
               style="cursor: pointer;flex:1;text-align:center;padding:10px;5px;background-color:#f2f2f2;margin:5px;"
             >
               直播系统
             </div>
             <div
-              @click="toPage('work-team')"
+              @click="toPage('moreToMore')"
               style="cursor: pointer;flex:1;text-align:center;padding:10px;5px;background-color:#f2f2f2;margin:5px;"
             >
               会议系统
@@ -38,14 +38,14 @@
           </div>
           <li slot="reference">分类</li>
         </el-popover>
-        <el-dropdown trigger="hover" @command="changeSys()">
+        <!-- <el-dropdown trigger="hover" @command="changeSys()">
           <li>其它</li>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item command="安全设置">一对一</el-dropdown-item>
             <el-dropdown-item command="changetheme">一对多</el-dropdown-item>
             <el-dropdown-item command="changetheme">多对多</el-dropdown-item>
           </el-dropdown-menu>
-        </el-dropdown>
+        </el-dropdown> -->
       </ul>
       <div class="h_user">
         <!-- <div class="gap"></div> -->
