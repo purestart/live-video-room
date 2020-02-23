@@ -3,12 +3,12 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import echarts from "echarts";
+// import echarts from "echarts";
 import ElementUI from "element-ui";
 import formVerify from "./utils/formVerify";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
-import JsonViewer from "vue-json-viewer";
+// import JsonViewer from "vue-json-viewer";
 import "default-passive-events"; // 去 Added non-passive event listener to a scroll-blocking。。。的警告
 
 import regComponents from "./utils/regComponents.js";
@@ -16,8 +16,8 @@ import "flex.css";
 import "./assets/css/base.scss";
 import utils from "./utils";
 import "./assets/icons/icon";
-Vue.prototype.$echarts = echarts;
-Vue.use(JsonViewer);
+// Vue.prototype.$echarts = echarts;
+// Vue.use(JsonViewer);
 
 Vue.use(ElementUI, {
   size: "small"
