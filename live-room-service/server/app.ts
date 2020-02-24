@@ -71,7 +71,7 @@ io.sockets.on('connection', (socket)=> {
     console.log("join",room);
 		var myRoom = io.sockets.adapter.rooms[room]; 
 		var users = (myRoom)? Object.keys(myRoom.sockets).length : 0;
-
+    console.log("users",users);
 		if(users < USERCOUNT){
 			socket.emit('joined', room, socket.id); //发给除自己之外的房间内的所有人
 			if(users > 1){
@@ -80,7 +80,8 @@ io.sockets.on('connection', (socket)=> {
 		
 		}else{
 			socket.leave(room);	
-			socket.emit('full', room, socket.id);
+      socket.emit('full', room, socket.id);
+      
 		}
 		//socket.emit('joined', room, socket.id); //发给自己
 		//socket.broadcast.emit('joined', room, socket.id); //发给除自己之外的这个节点上的所有人

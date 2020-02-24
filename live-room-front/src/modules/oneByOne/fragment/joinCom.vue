@@ -6,6 +6,7 @@
     <div class="p-t-20 p-b-20 b-b">
       <div class="" flex="box:last">
         <el-input
+          v-model="roomId"
           class="input-no f-15"
           placeholder="请输入好友ID或者终端号"
         ></el-input>
@@ -56,7 +57,8 @@
 export default {
   data () {
     return {
-      joinOption:[]
+      joinOption:[],
+      roomId:""
     }
   },
   created () {
@@ -66,7 +68,18 @@ export default {
   },
   methods:{
     join(){
-      this.$emit("onJoin");
+      if(!this.roomId){
+        this.$message({
+          type:"warning",
+          message:"请输入好友ID或者终端号"
+        });
+
+        return;
+      }
+      let options ={
+        roomId:this.roomId
+      }
+      this.$emit("onJoin",options);
     }
   }
 }

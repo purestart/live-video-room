@@ -12,3 +12,10 @@
 
     所用技术 koa2 + socket.io + typescript + mysql + redis + sequelize + jwt + pm2 + memory-cache(本地缓存和redis可
     以随时切换)
+
+## 项目截图
+
+<img src="https://gitee.com/_pure/codes/ve2q9k657h0yfnlbcruij93/raw?blob_name=live-room01.png" >
+<img src="https://gitee.com/_pure/codes/ve2q9k657h0yfnlbcruij93/raw?blob_name=live-room02.png" >
+<img src="https://gitee.com/_pure/codes/ve2q9k657h0yfnlbcruij93/raw?blob_name=live-room03.png" >
+<img src="https://gitee.com/_pure/codes/ve2q9k657h0yfnlbcruij93/raw?blob_name=live-room04.png" >

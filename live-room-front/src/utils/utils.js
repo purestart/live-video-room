@@ -203,7 +203,7 @@ export default class Utils {
     for (var i = 1; i < code.length; i++) {
       c += String.fromCharCode(code.charCodeAt(i) + code.charCodeAt(i - 1));
     }
-    return (escape(c));
+    return escape(c);
   }
 
   // 解密
@@ -214,6 +214,27 @@ export default class Utils {
       c += String.fromCharCode(code.charCodeAt(i) - c.charCodeAt(i - 1));
     }
     return c;
+  }
+
+  IsPC() {
+    var userAgentInfo = navigator.userAgent;
+    var Agents = [
+      "Android",
+      "iPhone",
+      "SymbianOS",
+      "Windows Phone",
+      "iPad",
+      "iPod"
+    ];
+    var flag = true;
+
+    for (var v = 0; v < Agents.length; v++) {
+      if (userAgentInfo.indexOf(Agents[v]) > 0) {
+        flag = false;
+        break;
+      }
+    }
+    return flag;
   }
 }
 export const utils = new Utils();

@@ -26,6 +26,11 @@ Vue.use(formVerify);
 Vue.use(regComponents);
 Vue.use(utils);
 
+// Vue.config.debug = process.env.NODE_ENV === 'development';
+// Vue.config.silent = process.env.NODE_ENV === 'production';
+Vue.config.devtools = true;
+// Vue.config.productionTip = false;
+
 NProgress.configure({ showSpinner: false });
 
 router.beforeEach((to, from, next) => {
