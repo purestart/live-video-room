@@ -10,6 +10,7 @@ const server = require('http').createServer(app.callback());
 const io = require('socket.io')(server);
 // const koaLogger = require('koa-logger-winston');
 // import logger from './src/middleware/logger';
+var USERCOUNT = 3;
 
 import sample from "./src/router/sample";
 // import myRouter from "./src/router/index";
@@ -58,60 +59,46 @@ app
 // 收集错误日志
 // app.use(koaLogger(logger.error));
 
-
-
-//connection
-io.sockets.on('connection', (socket)=>{
+io.sockets.on('connection', (socket)=> {
 
 	socket.on('message', (room, data)=>{
-    console.log("message",room,data);
-		socket.to(room).emit('message', room, data)//房间内所有人,除自己外
+    console.log("message",room, data);
+		socket.to(room).emit('message',room, data);
 	});
 
-	//该函数应该加锁
-	socket.on('join', (room)=> {
-
+	socket.on('join', (room)=>{
     socket.join(room);
     console.log("join",room);
+		var myRoom = io.sockets.adapter.rooms[room]; 
+		var users = (myRoom)? Object.keys(myRoom.sockets).length : 0;
 
-		var myRoom = io.sockets.adapter.rooms[room];
-		var users = Object.keys(myRoom.sockets).length;
-
-		// logger.log('the number of user in room is: ' + users);
-
-		//在这里可以控制进入房间的人数,现在一个房间最多 2个人
-		//为了便于客户端控制，如果是多人的话，应该将目前房间里
-		//人的个数当做数据下发下去。
-		if(users < 3) {
-			socket.emit('joined', room, socket.id);	
-			if (users > 1) {
-				socket.to(room).emit('otherjoin', room);//除自己之外
+		if(users < USERCOUNT){
+			socket.emit('joined', room, socket.id); //发给除自己之外的房间内的所有人
+			if(users > 1){
+				socket.to(room).emit('otherjoin', room, socket.id);
 			}
-		}else {
-			socket.leave(room);
-			socket.emit('full', room, socket.id);	
+		
+		}else{
+			socket.leave(room);	
+			socket.emit('full', room, socket.id);
 		}
-	 	//socket.to(room).emit('joined', room, socket.id);//除自己之外
-		//io.in(room).emit('joined', room, socket.id)//房间内所有人
-	 	//socket.broadcast.emit('joined', room, socket.id);//除自己，全部站点	
+		//socket.emit('joined', room, socket.id); //发给自己
+		//socket.broadcast.emit('joined', room, socket.id); //发给除自己之外的这个节点上的所有人
+		//io.in(room).emit('joined', room, socket.id); //发给房间内的所有人
 	});
 
-	socket.on('leave', (room)=> {
-		var myRoom = io.sockets.adapter.rooms[room];
-		var users = Object.keys(myRoom.sockets).length;
-		//users - 1;
-
-		// logger.log('the number of user in room is: ' + (users-1));
-
-		socket.leave(room);
-		socket.to(room).emit('bye', room, socket.id)//房间内所有人,除自己外
-	 	socket.emit('leaved', room, socket.id);	
-	 	//socket.to(room).emit('joined', room, socket.id);//除自己之外
-		//io.in(room).emit('joined', room, socket.id)//房间内所有人
-	 	//socket.broadcast.emit('joined', room, socket.id);//除自己，全部站点	
+	socket.on('leave', (room)=>{
+		var myRoom = io.sockets.adapter.rooms[room]; 
+		var users = (myRoom)? Object.keys(myRoom.sockets).length : 0;
+		//socket.emit('leaved', room, socket.id);
+		//socket.broadcast.emit('leaved', room, socket.id);
+		socket.to(room).emit('bye', room, socket.id);
+		socket.emit('leaved', room, socket.id);
+		//io.in(room).emit('leaved', room, socket.id);
 	});
 
 });
+
 
 // console.log("listen 9090");
 // app.listen(9090);
