@@ -10,4 +10,5 @@
 
 > live-room-service: 信令服务 接口服务
 
-    所用技术 koa2 + socket.io + typescript + mysql + redis + sequelize + jwt + pm2 + memory-cache(本地缓存和redis可以随时切换)
+    所用技术 koa2 + socket.io + typescript + mysql + redis + sequelize + jwt + pm2 + memory-cache(本地缓存和redis可
+    以随时切换)
