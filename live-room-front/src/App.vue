@@ -21,7 +21,7 @@ export default {
       //   this.screenWidth = document.body.clientWidth;
       //   this.screenHeight = document.body.clientHeight;
       // })();
-      console.log(window.screen.availWidth);
+      // console.log(window.screen.availWidth);
       this.getEnv();
     };
   },
