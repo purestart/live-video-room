@@ -4,7 +4,7 @@
       <Header :isCollapse="ShowHide" @changeCollapse="toggleShow" :username="userInfo.fullName || '未登录'"></Header>
     </div>
     <div class="body">
-      <div :class="ShowHide?'close-nav':'nav'" class="nav-box">
+      <div v-show="isPC" :class="ShowHide?'close-nav':'nav'" class="nav-box">
         <!-- <Nav :isCollapse="ShowHide" :lips="lips"></Nav> -->
         <div @click="toOrder" class="menu-btn-item m-t-20" flex="dir:top cross:center">
           <i class="iconfont icon-heart"></i>
@@ -63,6 +63,7 @@ export default {
   },
   computed: {
     ...mapState({
+      isPC: state => state.default.isPC
       // userInfo: state => state.default.userInfo
     })
   },
@@ -191,7 +192,7 @@ export default {
   /* left: 199px; top: 0; right: 0; bottom: 0; */
   /*overflow: auto;*/
   //  background: #f0f2f5;
-  min-width: 1000px;
+  // min-width: 1000px;
   /* z-index: 200; */
   flex: 1;
 

@@ -32,7 +32,8 @@ const state = {
   selectedTab: "0", // 当前激活的tab
   msg: "vuex data",
   permissions: ["sys:user:delete", "sys:user:export"], // 资源按钮权限
-  categoryList: []
+  categoryList: [],
+  isPC: true  // 当前环境是否为PC
 };
 const getters = {
   // 打平的菜单，只有一个层级
@@ -48,6 +49,10 @@ const getters = {
   }
 };
 const mutations = {
+  updateIsPc(state, payload) {
+    // console.log(payload);
+    state.isPC = payload;
+  },
   updateLoading(state, show) {
     state.loading = show;
   },
