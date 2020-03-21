@@ -21,7 +21,7 @@
           :key="index"
           v-for="(item, index) in relateList"
           flex="main:justify"
-          @click="join(item.id)"
+          
         >
           <div>
             <div flex>
@@ -35,8 +35,8 @@
             </div>
           </div>
           <div flex="cross:center">
-            <el-button v-if="index == 0">进入</el-button>
-            <el-button v-if="index != 0">加入</el-button>
+            <el-button @click="join(item.id)" v-if="index == 0">进入</el-button>
+            <el-button @click="join(item.id)" v-if="index != 0">加入</el-button>
           </div>
         </div>
       </div>

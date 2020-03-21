@@ -1,17 +1,10 @@
 <template>
   <div class="join-page">
-    <div class="join-title">
-      加入会议
-    </div>
+    <div class="join-title">加入会议</div>
     <div class="p-t-20 p-b-20 b-b">
-      <div class="" flex="box:last">
-        <el-input
-          class="input-no f-15"
-          placeholder="请输入房间号或者终端号"
-        ></el-input>
-        <el-button type="primary" @click="join" class="m-l-10 w-60"
-          >加入会议室</el-button
-        >
+      <div class flex="box:last">
+        <el-input class="input-no f-15" placeholder="请输入房间号或者终端号"></el-input>
+        <el-button type="primary" @click="join" class="m-l-10 w-60">加入会议室</el-button>
       </div>
       <div class="p-t-15">
         <el-checkbox-group v-model="joinOption">
@@ -21,24 +14,22 @@
       </div>
     </div>
     <div class="p-t-20">
-      <div class="last-title">
-        最近通话
-      </div>
+      <div class="last-title">最近通话</div>
       <div class="latest-wrapper p-t-10">
         <div
           class="latest-item b-b p-v-10 p-h-10"
-          :key="item"
-          v-for="(item, index) in 6"
+          :key="index"
+          v-for="(item, index) in relateList"
           flex="main:justify"
         >
           <div>
-            <div flex="">
+            <div flex>
               <div>
                 <img src="../../../assets/images/header.png" class="image" />
               </div>
               <div class="m-l-20" flex="dir:top main:justify">
-                <div class="m-t-5 f-16">xxx的会议室</div>
-                <div class="m-b-5">9843612514</div>
+                <div class="m-t-5 f-16">{{item.name}}</div>
+                <div class="m-b-5">{{item.id}}</div>
               </div>
             </div>
           </div>
@@ -54,22 +45,29 @@
 
 <script type="text/ecmascript-6">
 export default {
-  data () {
+  data() {
     return {
-      joinOption:[]
-    }
+      joinOption: [],
+      relateList: [
+        {
+          name: "我的会议室",
+          id: 522382456
+        },
+        {
+          name: "单纯的开始的会议室",
+          id: 5678563233
+        }
+      ]
+    };
   },
-  created () {
-  },
-  mounted () {
-
-  },
-  methods:{
-    join(){
+  created() {},
+  mounted() {},
+  methods: {
+    join() {
       this.$emit("onJoin");
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
