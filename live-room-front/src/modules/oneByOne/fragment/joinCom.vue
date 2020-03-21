@@ -1,45 +1,36 @@
 <template>
   <div class="join-page">
-    <div class="join-title">
-      加入视频通话
-    </div>
+    <div class="join-title">加入视频通话</div>
     <div class="p-t-20 p-b-20 b-b">
-      <div class="" flex="box:last">
-        <el-input
-          v-model="roomId"
-          class="input-no f-15"
-          placeholder="请输入好友ID或者终端号"
-        ></el-input>
-        <el-button type="primary" @click="join" class="m-l-10 w-60"
-          >加入视频</el-button
-        >
+      <div class flex="box:last">
+        <el-input v-model="roomId" class="input-no f-15" placeholder="请输入好友ID或者终端号"></el-input>
+        <el-button type="primary" @click="join" class="m-l-10 w-60">加入视频</el-button>
       </div>
       <div class="p-t-15">
         <el-checkbox-group v-model="joinOption">
-          <el-checkbox label="入会时关闭摄像头" name="type"></el-checkbox>
-          <el-checkbox label="入会时静音" name="type"></el-checkbox>
+          <el-checkbox label="加入时关闭摄像头" name="type"></el-checkbox>
+          <el-checkbox label="加入时静音" name="type"></el-checkbox>
         </el-checkbox-group>
       </div>
     </div>
     <div class="p-t-20">
-      <div class="last-title">
-        最近联系人
-      </div>
+      <div class="last-title">最近联系人</div>
       <div class="latest-wrapper p-t-10">
         <div
           class="latest-item b-b p-v-10 p-h-10"
-          :key="item"
-          v-for="(item, index) in 6"
+          :key="index"
+          v-for="(item, index) in relateList"
           flex="main:justify"
+          @click="join(item.id)"
         >
           <div>
-            <div flex="">
+            <div flex>
               <div>
                 <img src="../../../assets/images/header.png" class="image" />
               </div>
               <div class="m-l-20" flex="dir:top main:justify">
-                <div class="m-t-5 f-16">xxx的好友</div>
-                <div class="m-b-5">9843612514</div>
+                <div class="m-t-5 f-16">{{item.name}}</div>
+                <div class="m-b-5">{{item.id}}</div>
               </div>
             </div>
           </div>
@@ -55,34 +46,44 @@
 
 <script type="text/ecmascript-6">
 export default {
-  data () {
+  data() {
     return {
-      joinOption:[],
-      roomId:""
-    }
+      joinOption: [],
+      roomId: "",
+      relateList: [
+        {
+          name: "我的视频",
+          id: 522382456
+        },
+        {
+          name: "单纯的开始",
+          id: 5678563233
+        }
+      ]
+    };
   },
-  created () {
-  },
-  mounted () {
-
-  },
-  methods:{
-    join(){
-      if(!this.roomId){
+  created() {},
+  mounted() {},
+  methods: {
+    join(id) {
+      if (id) {
+        this.roomId = id;
+      }
+      if (!this.roomId) {
         this.$message({
-          type:"warning",
-          message:"请输入好友ID或者终端号"
+          type: "warning",
+          message: "请输入好友ID或者终端号"
         });
 
         return;
       }
-      let options ={
-        roomId:this.roomId
-      }
-      this.$emit("onJoin",options);
+      let options = {
+        roomId: this.roomId
+      };
+      this.$emit("onJoin", options);
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
