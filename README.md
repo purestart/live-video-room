@@ -1,5 +1,7 @@
 ## 项目说明
 
+    p2p中继服务器（stun/turn服务器）使用coturn、目前实现了一对一视频聊天、多对多视频会议和直播暂未完成
+
 > live-room-front: 直播前端项目
 
     直播页面、所用技术vue2 + socket.io + vuex + vue-router + element-ui等技术
